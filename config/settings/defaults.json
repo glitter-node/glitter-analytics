@@ -1,0 +1,32 @@
+{
+    "_meta": {
+        "version": "1.0.0",
+        "description": "사이트 분석 모듈 기본 설정",
+        "categories": ["general"]
+    },
+    "defaults": {
+        "general": {
+            "enabled": true,
+            "retention_days": 90,
+            "ip_anonymization": "hash",
+            "exclude_bots": true,
+            "exclude_paths": ["/admin/*", "/api/*", "/build/*"],
+            "session_timeout_minutes": 30,
+            "respect_do_not_track": true
+        }
+    },
+    "frontend_schema": {
+        "general": {
+            "expose": false,
+            "fields": {
+                "enabled": {"expose": false},
+                "retention_days": {"expose": false},
+                "ip_anonymization": {"expose": false},
+                "exclude_bots": {"expose": false},
+                "exclude_paths": {"expose": false},
+                "session_timeout_minutes": {"expose": false},
+                "respect_do_not_track": {"expose": false}
+            }
+        }
+    }
+}

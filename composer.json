@@ -1,0 +1,20 @@
+{
+    "name": "modules/glitter-analytics",
+    "description": "Site analytics module for Gnuboard7",
+    "type": "library",
+    "version": "0.7.1",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Modules\\Glitter\\Analytics\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Glitter\\Analytics\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": "^8.2"
+    }
+}

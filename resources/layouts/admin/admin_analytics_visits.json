@@ -1,0 +1,507 @@
+{
+  "version": "1.0.0",
+  "layout_name": "admin_analytics_visits",
+  "permissions": [
+    "glitter-analytics.visits.view"
+  ],
+  "extends": "_admin_base",
+  "meta": {
+    "title": "$t:glitter-analytics.admin.visits.title",
+    "description": "$t:glitter-analytics.admin.visits.description"
+  },
+  "data_sources": [
+    {
+      "id": "analyticsVisits",
+      "type": "api",
+      "endpoint": "/api/modules/glitter-analytics/admin/visits",
+      "method": "GET",
+      "auto_fetch": true,
+      "auth_required": true,
+      "refetchOnMount": true,
+      "params": {
+        "from": "{{query.from}}",
+        "to": "{{query.to}}",
+        "path": "{{query.path}}",
+        "source": "{{query.source}}",
+        "member": "{{query.member || 'all'}}",
+        "page": "{{query.page || 1}}",
+        "per_page": "{{query.per_page || 20}}"
+      },
+      "fallback": {
+        "data": {
+          "data": [],
+          "meta": {
+            "current_page": 1,
+            "last_page": 1,
+            "per_page": 20,
+            "total": 0
+          }
+        }
+      }
+    }
+  ],
+  "slots": {
+    "content": [
+      {
+        "id": "visits_content",
+        "type": "basic",
+        "name": "Div",
+        "props": {
+          "className": "admin-page-content-fluid space-y-4"
+        },
+        "children": [
+          {
+            "type": "composite",
+            "name": "PageHeader",
+            "props": {
+              "title": "$t:glitter-analytics.admin.visits.title",
+              "description": "$t:glitter-analytics.admin.visits.description"
+            }
+          },
+          {
+            "id": "visit_filters",
+            "type": "basic",
+            "name": "Div",
+            "props": {
+              "className": "admin-card grid grid-cols-1 md:grid-cols-2 xl:grid-cols-6 gap-3"
+            },
+            "children": [
+              {
+                "id": "from",
+                "type": "basic",
+                "name": "Div",
+                "props": {
+                  "className": "form-group min-w-0"
+                },
+                "children": [
+                  {
+                    "type": "basic",
+                    "name": "Label",
+                    "text": "$t:glitter-analytics.admin.visits.filters.from",
+                    "props": {
+                      "className": "form-label"
+                    }
+                  },
+                  {
+                    "type": "basic",
+                    "name": "Input",
+                    "props": {
+                      "type": "date",
+                      "value": "{{query.from || ''}}",
+                      "className": "input w-full"
+                    },
+                    "actions": [
+                      {
+                        "type": "change",
+                        "handler": "navigate",
+                        "params": {
+                          "path": "/admin/analytics/visits",
+                          "mergeQuery": true,
+                          "query": {
+                            "from": "{{$event.target.value}}",
+                            "page": 1
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "to",
+                "type": "basic",
+                "name": "Div",
+                "props": {
+                  "className": "form-group min-w-0"
+                },
+                "children": [
+                  {
+                    "type": "basic",
+                    "name": "Label",
+                    "text": "$t:glitter-analytics.admin.visits.filters.to",
+                    "props": {
+                      "className": "form-label"
+                    }
+                  },
+                  {
+                    "type": "basic",
+                    "name": "Input",
+                    "props": {
+                      "type": "date",
+                      "value": "{{query.to || ''}}",
+                      "className": "input w-full"
+                    },
+                    "actions": [
+                      {
+                        "type": "change",
+                        "handler": "navigate",
+                        "params": {
+                          "path": "/admin/analytics/visits",
+                          "mergeQuery": true,
+                          "query": {
+                            "to": "{{$event.target.value}}",
+                            "page": 1
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "path",
+                "type": "basic",
+                "name": "Div",
+                "props": {
+                  "className": "form-group min-w-0"
+                },
+                "children": [
+                  {
+                    "type": "basic",
+                    "name": "Label",
+                    "text": "$t:glitter-analytics.admin.visits.filters.path",
+                    "props": {
+                      "className": "form-label"
+                    }
+                  },
+                  {
+                    "type": "basic",
+                    "name": "Input",
+                    "props": {
+                      "type": "text",
+                      "value": "{{query.path || ''}}",
+                      "className": "input w-full"
+                    },
+                    "actions": [
+                      {
+                        "type": "change",
+                        "handler": "navigate",
+                        "params": {
+                          "path": "/admin/analytics/visits",
+                          "mergeQuery": true,
+                          "query": {
+                            "path": "{{$event.target.value}}",
+                            "page": 1
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "source",
+                "type": "basic",
+                "name": "Div",
+                "props": {
+                  "className": "form-group min-w-0"
+                },
+                "children": [
+                  {
+                    "type": "basic",
+                    "name": "Label",
+                    "text": "$t:glitter-analytics.admin.visits.filters.source",
+                    "props": {
+                      "className": "form-label"
+                    }
+                  },
+                  {
+                    "type": "basic",
+                    "name": "Select",
+                    "props": {
+                      "value": "{{query.source || ''}}",
+                      "className": "input w-full",
+                      "options": [
+                        {
+                          "label": "$t:glitter-analytics.common.all",
+                          "value": ""
+                        },
+                        {
+                          "label": "$t:glitter-analytics.source.initial",
+                          "value": "initial"
+                        },
+                        {
+                          "label": "$t:glitter-analytics.source.spa",
+                          "value": "spa"
+                        }
+                      ]
+                    },
+                    "actions": [
+                      {
+                        "type": "change",
+                        "handler": "navigate",
+                        "params": {
+                          "path": "/admin/analytics/visits",
+                          "mergeQuery": true,
+                          "query": {
+                            "source": "{{$event.target.value}}",
+                            "page": 1
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "member",
+                "type": "basic",
+                "name": "Div",
+                "props": {
+                  "className": "form-group min-w-0"
+                },
+                "children": [
+                  {
+                    "type": "basic",
+                    "name": "Label",
+                    "text": "$t:glitter-analytics.admin.visits.filters.member",
+                    "props": {
+                      "className": "form-label"
+                    }
+                  },
+                  {
+                    "type": "basic",
+                    "name": "Select",
+                    "props": {
+                      "value": "{{query.member || 'all'}}",
+                      "className": "input w-full",
+                      "options": [
+                        {
+                          "label": "$t:glitter-analytics.common.all",
+                          "value": "all"
+                        },
+                        {
+                          "label": "$t:glitter-analytics.member.member",
+                          "value": "member"
+                        },
+                        {
+                          "label": "$t:glitter-analytics.member.guest",
+                          "value": "guest"
+                        }
+                      ]
+                    },
+                    "actions": [
+                      {
+                        "type": "change",
+                        "handler": "navigate",
+                        "params": {
+                          "path": "/admin/analytics/visits",
+                          "mergeQuery": true,
+                          "query": {
+                            "member": "{{$event.target.value}}",
+                            "page": 1
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "per_page",
+                "type": "basic",
+                "name": "Div",
+                "props": {
+                  "className": "form-group min-w-0"
+                },
+                "children": [
+                  {
+                    "type": "basic",
+                    "name": "Label",
+                    "text": "$t:glitter-analytics.admin.visits.filters.per_page",
+                    "props": {
+                      "className": "form-label"
+                    }
+                  },
+                  {
+                    "type": "basic",
+                    "name": "Select",
+                    "props": {
+                      "value": "{{query.per_page || '20'}}",
+                      "className": "input w-full",
+                      "options": [
+                        {
+                          "label": "$t:glitter-analytics.common.per_page_20",
+                          "value": 20
+                        },
+                        {
+                          "label": "$t:glitter-analytics.common.per_page_50",
+                          "value": 50
+                        },
+                        {
+                          "label": "$t:glitter-analytics.common.per_page_100",
+                          "value": 100
+                        }
+                      ]
+                    },
+                    "actions": [
+                      {
+                        "type": "change",
+                        "handler": "navigate",
+                        "params": {
+                          "path": "/admin/analytics/visits",
+                          "mergeQuery": true,
+                          "query": {
+                            "per_page": "{{$event.target.value}}",
+                            "page": 1
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "reset_filters",
+            "type": "basic",
+            "name": "Button",
+            "props": {
+              "type": "button",
+              "className": "btn btn-neutral"
+            },
+            "actions": [
+              {
+                "type": "click",
+                "handler": "navigate",
+                "params": {
+                  "path": "/admin/analytics/visits",
+                  "mergeQuery": false
+                }
+              }
+            ],
+            "children": [
+              {
+                "type": "basic",
+                "name": "Span",
+                "text": "$t:glitter-analytics.admin.visits.filters.reset"
+              }
+            ]
+          },
+          {
+            "id": "export_csv",
+            "type": "basic",
+            "name": "Button",
+            "props": { "type": "button", "className": "btn btn-primary" },
+            "actions": [{
+              "type": "click",
+              "handler": "downloadAttachment",
+              "params": {
+                "url": "{{'/api/modules/glitter-analytics/admin/visits/export?' + new URLSearchParams({from: query.from || '', to: query.to || '', path: query.path || '', source: query.source || '', member: query.member || 'all'}).toString()}}",
+                "filename": "analytics-visits.csv"
+              }
+            }],
+            "children": [{ "type": "basic", "name": "Span", "text": "$t:glitter-analytics.admin.visits.export_csv" }]
+          },
+          {
+            "id": "visits_error",
+            "type": "basic",
+            "name": "P",
+            "if": "{{analyticsVisits?.error}}",
+            "text": "$t:glitter-analytics.admin.common.load_error",
+            "props": {
+              "className": "alert-error"
+            }
+          },
+          {
+            "id": "visits_empty",
+            "type": "basic",
+            "name": "P",
+            "if": "{{!analyticsVisits?.loading && (analyticsVisits?.data?.data || []).length === 0}}",
+            "text": "$t:glitter-analytics.admin.visits.empty",
+            "props": {
+              "className": "admin-card text-center"
+            }
+          },
+          {
+            "id": "visits_grid",
+            "type": "composite",
+            "name": "DataGrid",
+            "blur_until_loaded": true,
+            "props": {
+              "columns": [
+                {
+                  "field": "occurred_at",
+                  "header": "$t:glitter-analytics.admin.visits.columns.occurred_at"
+                },
+                {
+                  "field": "path",
+                  "header": "$t:glitter-analytics.admin.visits.columns.path",
+                  "cellChildren": [
+                    {
+                      "type": "basic",
+                      "name": "Span",
+                      "text": "{{row.path}}",
+                      "props": {
+                        "className": "font-mono break-all"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "field": "source",
+                  "header": "$t:glitter-analytics.admin.visits.columns.source",
+                  "cellChildren": [
+                    {
+                      "type": "basic",
+                      "name": "Span",
+                      "text": "{{row.source === 'initial' ? '$t:glitter-analytics.source.initial' : '$t:glitter-analytics.source.spa'}}",
+                      "props": {
+                        "className": "badge badge-blue"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "field": "member",
+                  "header": "$t:glitter-analytics.admin.visits.columns.member",
+                  "cellChildren": [
+                    {
+                      "type": "basic",
+                      "name": "Span",
+                      "text": "{{row.member?.is_member ? (row.member?.name || '$t:glitter-analytics.member.member') : '$t:glitter-analytics.member.guest'}}"
+                    }
+                  ]
+                },
+                {
+                  "field": "has_visitor",
+                  "header": "$t:glitter-analytics.admin.visits.columns.visitor",
+                  "cellChildren": [
+                    {
+                      "type": "basic",
+                      "name": "Span",
+                      "text": "{{row.has_visitor ? '$t:glitter-analytics.common.present' : '$t:glitter-analytics.common.absent'}}"
+                    }
+                  ]
+                },
+                {
+                  "field": "has_session",
+                  "header": "$t:glitter-analytics.admin.visits.columns.session",
+                  "cellChildren": [
+                    {
+                      "type": "basic",
+                      "name": "Span",
+                      "text": "{{row.has_session ? '$t:glitter-analytics.common.present' : '$t:glitter-analytics.common.absent'}}"
+                    }
+                  ]
+                },
+                {
+                  "field": "referrer_host",
+                  "header": "$t:glitter-analytics.admin.visits.columns.referrer"
+                }
+              ],
+              "data": "{{analyticsVisits?.data?.data || []}}",
+              "pagination": true,
+              "alwaysShowPagination": true,
+              "serverSidePagination": true,
+              "pageSize": "{{analyticsVisits?.data?.meta?.per_page || 20}}",
+              "serverCurrentPage": "{{analyticsVisits?.data?.meta?.current_page || 1}}",
+              "serverTotalPages": "{{analyticsVisits?.data?.meta?.last_page || 1}}"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

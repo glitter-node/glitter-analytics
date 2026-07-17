@@ -1,0 +1,2 @@
+<?php
+return ['validation_failed'=>'Please check the submitted values.','pageview'=>['accepted'=>'The pageview collection request was processed.'],'status_retrieved'=>'The site analytics module status was retrieved.','visits_retrieved'=>'Visit records were retrieved.','dashboard_retrieved'=>'The analytics dashboard was retrieved.','settings'=>['retrieved'=>'Site analytics settings were retrieved.','updated'=>'Site analytics settings were saved.','options'=>['hash'=>'Hash','mask'=>'Mask','none'=>'No anonymization']]];

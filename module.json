@@ -1,0 +1,29 @@
+{
+    "identifier": "glitter-analytics",
+    "vendor": "Glitter.kr",
+    "name": {
+        "ko": "사이트 분석",
+        "en": "Site Analytics"
+    },
+    "version": "0.7.1",
+    "license": "MIT",
+    "description": {
+        "ko": "방문 및 콘텐츠 이용 현황을 분석하는 관리자용 모듈",
+        "en": "An administration module for analyzing visits and content usage."
+    },
+    "g7_version": ">=7.0.0",
+    "dependencies": {
+        "modules": {},
+        "plugins": {}
+    },
+    "assets": {
+        "js": {
+            "entry": "resources/js/index.ts",
+            "output": "dist/js/module.iife.js"
+        }
+    },
+    "loading": {
+        "strategy": "global",
+        "priority": 100
+    }
+}

@@ -1,0 +1,413 @@
+{
+    "version": "1.0.0",
+    "layout_name": "admin_analytics_settings",
+    "permissions": [
+        "glitter-analytics.settings.view"
+    ],
+    "extends": "_admin_base",
+    "meta": {
+        "title": "$t:glitter-analytics.admin.settings.title",
+        "description": "$t:glitter-analytics.admin.settings.description"
+    },
+    "initLocal": {
+        "form": {
+            "settings": []
+        },
+        "errors": null
+    },
+    "data_sources": [
+        {
+            "id": "analyticsSettings",
+            "type": "api",
+            "endpoint": "/api/modules/glitter-analytics/admin/settings",
+            "method": "GET",
+            "auto_fetch": true,
+            "auth_required": true,
+            "initLocal": "form",
+            "refetchOnMount": true
+        }
+    ],
+    "slots": {
+        "content": [
+            {
+                "id": "settings_content",
+                "type": "basic",
+                "name": "Div",
+                "props": {
+                    "className": "admin-page-content-responsive"
+                },
+                "children": [
+                    {
+                        "type": "composite",
+                        "name": "PageHeader",
+                        "props": {
+                            "title": "$t:glitter-analytics.admin.settings.title",
+                            "description": "$t:glitter-analytics.admin.settings.description"
+                        }
+                    },
+                    {
+                        "type": "basic",
+                        "name": "P",
+                        "text": "$t:glitter-analytics.admin.settings.privacy_warning",
+                        "props": {
+                            "className": "alert-warning"
+                        }
+                    },
+                    {
+                        "id": "settings_form",
+                        "type": "basic",
+                        "name": "Form",
+                        "dataKey": "form",
+                        "trackChanges": true,
+                        "props": {
+                            "className": "admin-card"
+                        },
+                        "children": [
+                            {
+                                "id": "field_enabled",
+                                "type": "basic",
+                                "name": "Div",
+                                "props": {
+                                    "className": "form-group"
+                                },
+                                "children": [
+                                    {
+                                        "type": "basic",
+                                        "name": "Label",
+                                        "text": "$t:glitter-analytics.settings.enabled.label",
+                                        "props": {
+                                            "className": "form-label"
+                                        }
+                                    },
+                                    {
+                                        "type": "basic",
+                                        "name": "Select",
+                                        "props": {
+                                            "name": "settings.enabled",
+                                            "className": "input w-full",
+                                            "options": [
+                                                {
+                                                    "value": true,
+                                                    "label": "$t:glitter-analytics.common.enabled"
+                                                },
+                                                {
+                                                    "value": false,
+                                                    "label": "$t:glitter-analytics.common.disabled"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "type": "basic",
+                                        "name": "P",
+                                        "text": "$t:glitter-analytics.settings.enabled.description",
+                                        "props": {
+                                            "className": "form-hint"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "field_retention_days",
+                                "type": "basic",
+                                "name": "Div",
+                                "props": {
+                                    "className": "form-group"
+                                },
+                                "children": [
+                                    {
+                                        "type": "basic",
+                                        "name": "Label",
+                                        "text": "$t:glitter-analytics.settings.retention_days.label",
+                                        "props": {
+                                            "className": "form-label"
+                                        }
+                                    },
+                                    {
+                                        "type": "basic",
+                                        "name": "Input",
+                                        "props": {
+                                            "name": "settings.retention_days",
+                                            "className": "input w-full",
+                                            "type": "number"
+                                        }
+                                    },
+                                    {
+                                        "type": "basic",
+                                        "name": "P",
+                                        "text": "$t:glitter-analytics.settings.retention_days.description",
+                                        "props": {
+                                            "className": "form-hint"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "field_ip_anonymization",
+                                "type": "basic",
+                                "name": "Div",
+                                "props": {
+                                    "className": "form-group"
+                                },
+                                "children": [
+                                    {
+                                        "type": "basic",
+                                        "name": "Label",
+                                        "text": "$t:glitter-analytics.settings.ip_anonymization.label",
+                                        "props": {
+                                            "className": "form-label"
+                                        }
+                                    },
+                                    {
+                                        "type": "basic",
+                                        "name": "Select",
+                                        "props": {
+                                            "name": "settings.ip_anonymization",
+                                            "className": "input w-full",
+                                            "options": "{{_local.form?.options?.ip_anonymization ?? []}}"
+                                        }
+                                    },
+                                    {
+                                        "type": "basic",
+                                        "name": "P",
+                                        "text": "$t:glitter-analytics.settings.ip_anonymization.description",
+                                        "props": {
+                                            "className": "form-hint"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "field_exclude_bots",
+                                "type": "basic",
+                                "name": "Div",
+                                "props": {
+                                    "className": "form-group"
+                                },
+                                "children": [
+                                    {
+                                        "type": "basic",
+                                        "name": "Label",
+                                        "text": "$t:glitter-analytics.settings.exclude_bots.label",
+                                        "props": {
+                                            "className": "form-label"
+                                        }
+                                    },
+                                    {
+                                        "type": "basic",
+                                        "name": "Select",
+                                        "props": {
+                                            "name": "settings.exclude_bots",
+                                            "className": "input w-full",
+                                            "options": [
+                                                {
+                                                    "value": true,
+                                                    "label": "$t:glitter-analytics.common.enabled"
+                                                },
+                                                {
+                                                    "value": false,
+                                                    "label": "$t:glitter-analytics.common.disabled"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "type": "basic",
+                                        "name": "P",
+                                        "text": "$t:glitter-analytics.settings.exclude_bots.description",
+                                        "props": {
+                                            "className": "form-hint"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "field_exclude_paths",
+                                "type": "basic",
+                                "name": "Div",
+                                "props": {
+                                    "className": "form-group"
+                                },
+                                "children": [
+                                    {
+                                        "type": "basic",
+                                        "name": "Label",
+                                        "text": "$t:glitter-analytics.settings.exclude_paths.label",
+                                        "props": {
+                                            "className": "form-label"
+                                        }
+                                    },
+                                    {
+                                        "type": "basic",
+                                        "name": "Textarea",
+                                        "props": {
+                                            "name": "settings.exclude_paths_text",
+                                            "className": "input w-full",
+                                            "rows": 5
+                                        }
+                                    },
+                                    {
+                                        "type": "basic",
+                                        "name": "P",
+                                        "text": "$t:glitter-analytics.settings.exclude_paths.description",
+                                        "props": {
+                                            "className": "form-hint"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "field_session_timeout_minutes",
+                                "type": "basic",
+                                "name": "Div",
+                                "props": {
+                                    "className": "form-group"
+                                },
+                                "children": [
+                                    {
+                                        "type": "basic",
+                                        "name": "Label",
+                                        "text": "$t:glitter-analytics.settings.session_timeout_minutes.label",
+                                        "props": {
+                                            "className": "form-label"
+                                        }
+                                    },
+                                    {
+                                        "type": "basic",
+                                        "name": "Input",
+                                        "props": {
+                                            "name": "settings.session_timeout_minutes",
+                                            "className": "input w-full",
+                                            "type": "number"
+                                        }
+                                    },
+                                    {
+                                        "type": "basic",
+                                        "name": "P",
+                                        "text": "$t:glitter-analytics.settings.session_timeout_minutes.description",
+                                        "props": {
+                                            "className": "form-hint"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "field_respect_do_not_track",
+                                "type": "basic",
+                                "name": "Div",
+                                "props": {
+                                    "className": "form-group"
+                                },
+                                "children": [
+                                    {
+                                        "type": "basic",
+                                        "name": "Label",
+                                        "text": "$t:glitter-analytics.settings.respect_do_not_track.label",
+                                        "props": {
+                                            "className": "form-label"
+                                        }
+                                    },
+                                    {
+                                        "type": "basic",
+                                        "name": "Select",
+                                        "props": {
+                                            "name": "settings.respect_do_not_track",
+                                            "className": "input w-full",
+                                            "options": [
+                                                {
+                                                    "value": true,
+                                                    "label": "$t:glitter-analytics.common.enabled"
+                                                },
+                                                {
+                                                    "value": false,
+                                                    "label": "$t:glitter-analytics.common.disabled"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "type": "basic",
+                                        "name": "P",
+                                        "text": "$t:glitter-analytics.settings.respect_do_not_track.description",
+                                        "props": {
+                                            "className": "form-hint"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "basic",
+                                "name": "Span",
+                                "if": "{{_local.errors}}",
+                                "text": "$t:glitter-analytics.admin.settings.validation_error",
+                                "props": {
+                                    "className": "form-error"
+                                }
+                            },
+                            {
+                                "id": "save",
+                                "type": "basic",
+                                "name": "Button",
+                                "props": {
+                                    "type": "button",
+                                    "className": "btn btn-primary"
+                                },
+                                "actions": [
+                                    {
+                                        "type": "click",
+                                        "handler": "apiCall",
+                                        "auth_required": true,
+                                        "target": "/api/modules/glitter-analytics/admin/settings",
+                                        "params": {
+                                            "method": "PUT",
+                                            "body": "{{({..._local.form.settings, exclude_paths_text: _local.form.settings.exclude_paths_text, enabled: _local.form.settings.enabled === true || _local.form.settings.enabled === \"true\", retention_days: Number(_local.form.settings.retention_days), exclude_bots: _local.form.settings.exclude_bots === true || _local.form.settings.exclude_bots === \"true\", session_timeout_minutes: Number(_local.form.settings.session_timeout_minutes), respect_do_not_track: _local.form.settings.respect_do_not_track === true || _local.form.settings.respect_do_not_track === \"true\"})}}"
+                                        },
+                                        "onSuccess": [
+                                            {
+                                                "handler": "refetchDataSource",
+                                                "params": {
+                                                    "dataSourceId": "analyticsSettings",
+                                                    "sync": true
+                                                }
+                                            },
+                                            {
+                                                "handler": "toast",
+                                                "params": {
+                                                    "type": "success",
+                                                    "message": "$t:glitter-analytics.admin.settings.save_success"
+                                                }
+                                            }
+                                        ],
+                                        "onError": [
+                                            {
+                                                "handler": "setState",
+                                                "params": {
+                                                    "target": "local",
+                                                    "errors": "{{error.errors}}"
+                                                }
+                                            },
+                                            {
+                                                "handler": "toast",
+                                                "params": {
+                                                    "type": "error",
+                                                    "message": "$t:glitter-analytics.admin.settings.save_error"
+                                                }
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "children": [
+                                    {
+                                        "type": "basic",
+                                        "name": "Span",
+                                        "text": "$t:glitter-analytics.admin.settings.save"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

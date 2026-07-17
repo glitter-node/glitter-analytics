@@ -1,0 +1,18 @@
+name: analytics-settings-management
+axes:
+  actor: [guest, admin_without_settings_view, admin_with_settings_view, admin_with_settings_update]
+  operation: [read, update]
+  payload: [valid, invalid_retention, invalid_anonymization, excessive_paths]
+  locale: [ko, en]
+  lifecycle: [before_update, after_module_update]
+effects:
+  - settings_persisted
+  - user_override_preserved
+  - unauthorized_request_no_mutation
+  - validation_failure_no_mutation
+  - layout_reflects_saved_values
+  - menu_sync_idempotent
+  - analytics_menu_tree_unique
+  - foreign_menu_parent_relationships_preserved
+  - exclude_paths_text_normalized_to_array
+  - settings_restored_after_runtime_smoke

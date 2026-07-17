@@ -1,0 +1,2 @@
+<?php
+namespace Modules\Glitter\Analytics\Http\Resources; use App\Http\Resources\BaseApiResource; use Illuminate\Http\Request; class AnalyticsDashboardResource extends BaseApiResource {public function toArray(Request $r):array{return ['timezone'=>$this->getValue('timezone'),'summary'=>$this->getValue('summary'),'trend'=>$this->getValue('trend'),'popular_paths'=>$this->getValue('popular_paths'),'referrers'=>$this->getValue('referrers'),'recent_visits'=>AnalyticsVisitResource::collection($this->getValue('recent_visits'))->resolve($r)];}}

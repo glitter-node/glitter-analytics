@@ -1,0 +1,2 @@
+<?php
+namespace Modules\Glitter\Analytics\DTO; use Carbon\CarbonImmutable; final readonly class AnalyticsVisitFilter {public function __construct(public CarbonImmutable $fromUtc,public CarbonImmutable $toUtc,public string $fromDate,public string $toDate,public string $timezone,public ?string $path=null,public ?string $source=null,public string $member='all',public int $page=1,public int $perPage=20){}}

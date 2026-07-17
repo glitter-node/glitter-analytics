@@ -1,0 +1,13 @@
+feature: analytics_browser_tracking
+description: 브라우저 최초 진입과 SPA 경로 변경을 익명 식별자와 함께 전송한다.
+test_files:
+  - resources/js/__tests__/analytics-tracker.test.ts
+  - tests/Unit/AnalyticsPageViewCollectionTest.php
+axes:
+  navigation: [initial, push, replace, pop, query_only, hash_only]
+  privacy: [normal, dnt, gpc]
+  storage: [available, denied, corrupted, expired]
+  transport: [beacon_success, beacon_fail_fetch_success, all_fail]
+  context: [top_level, iframe]
+  identity: [visitor_and_session, memory_fallback, missing]
+effects: [pageview_sent_once, skipped, visitor_hash_stored, session_hash_stored, raw_id_not_stored, no_retry_queue, no_ui_error, no_aggregation]

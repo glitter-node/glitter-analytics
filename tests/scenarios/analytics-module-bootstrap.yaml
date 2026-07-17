@@ -1,0 +1,15 @@
+name: glitter-analytics 모듈 부트스트랩
+description: Phase 1 설치·활성화 표면과 접근 제어를 검증한다.
+axes:
+  module_state: [uninstalled, installed, active, inactive]
+  actor: [guest, user, admin_without_permission, admin_with_permission]
+  surface: [menu, route, layout, status_api]
+  locale: [ko, en]
+expectations:
+  - install_creates_permissions_settings_layout_and_menu
+  - active_exposes_admin_route_layout_and_status_api
+  - inactive_does_not_expose_module_runtime_routes
+  - only_admin_with_dashboard_permission_can_access_status_api
+  - ko_and_en_translation_keys_resolve
+follow_up:
+  update_preserves_user_settings: Phase 2에서 lifecycle 회귀 테스트로 확장

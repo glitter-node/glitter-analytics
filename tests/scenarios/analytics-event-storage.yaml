@@ -1,0 +1,19 @@
+name: analytics-event-storage
+axes:
+  event_type: [page_view]
+  source: [initial, spa]
+  actor: [guest, member]
+  identity: [visitor_hash_only, visitor_and_session_hash, member_and_hashes]
+  referrer: [none, internal, external]
+  locale: [supported, null]
+  retention: [newer_than_cutoff, older_than_cutoff, boundary]
+  user_lifecycle: [active, withdrawn, deleted]
+effects:
+  - event_persisted
+  - enum_preserved
+  - nullable_fields_preserved
+  - user_reference_clear
+  - bounded_deletion
+  - no_raw_ip_or_user_agent
+  - no_automatic_aggregation
+  - no_automatic_pageview_collection

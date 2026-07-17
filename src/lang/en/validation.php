@@ -1,0 +1,2 @@
+<?php
+return ['pageview'=>['path'=>'The page path format is invalid.','referrer'=>'The referrer URL format is invalid.','origin'=>'Only requests from the current site are allowed.'],'analytics'=>['date'=>'Dates must use YYYY-MM-DD format.','order'=>'The end date cannot be before the start date.','range'=>'The maximum query range is 90 days.','path_max'=>'The path search must not exceed 200 characters.','source'=>'Select a valid source.','member'=>'Select a valid visitor type.','per_page'=>'Per page must be 20, 50, or 100.']];
