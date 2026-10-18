@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Glitter Analytics</title>
+  <desc id="desc">Privacy-first analytics dashboard with rising bars and a privacy shield.</desc>
+  <rect width="512" height="512" rx="112" fill="#17283B"/>
+  <rect x="91" y="101" width="330" height="304" rx="32" fill="#F3F8FA"/>
+  <rect x="124" y="133" width="132" height="17" rx="8.5" fill="#294B60"/>
+  <circle cx="373" cy="142" r="9" fill="#24B4A6"/>
+  <circle cx="344" cy="142" r="9" fill="#B5C9D2"/>
+  <path d="M130 337h252" stroke="#B7C9D1" stroke-width="8" stroke-linecap="round"/>
+  <rect x="145" y="265" width="43" height="72" rx="10" fill="#A6D6D4"/>
+  <rect x="211" y="224" width="43" height="113" rx="10" fill="#61BEB9"/>
+  <rect x="277" y="180" width="43" height="157" rx="10" fill="#188F92"/>
+  <path d="m150 230 78-55 54 17 67-48" fill="none" stroke="#F1B957" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="350" cy="144" r="9" fill="#F1B957"/>
+  <path d="M256 359c35-21 72-21 107 0v43c0 38-23 65-54 78-31-13-53-40-53-78z" fill="#1CA99F" stroke="#17283B" stroke-width="10" stroke-linejoin="round"/>
+  <path d="m282 404 19 19 34-38" fill="none" stroke="#FFFFFF" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
