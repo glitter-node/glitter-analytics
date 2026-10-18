@@ -1,0 +1,2 @@
+<?php
+namespace Modules\Glitter\Analytics\Http\Resources; use App\Http\Resources\BaseApiCollection; use Illuminate\Http\Request; class AnalyticsVisitCollection extends BaseApiCollection {public $collects=AnalyticsVisitResource::class;public function toArray(Request $r):array{return ['data'=>$this->collection->map(fn(AnalyticsVisitResource $x):array=>$x->toArray($r)),'meta'=>['current_page'=>$this->resource->currentPage(),'last_page'=>$this->resource->lastPage(),'per_page'=>$this->resource->perPage(),'total'=>$this->resource->total()]];}}

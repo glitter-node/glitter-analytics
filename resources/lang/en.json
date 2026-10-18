@@ -1,0 +1,131 @@
+{
+    "module": {
+        "name": "Site Analytics",
+        "description": "An administration module for analyzing visits and content usage."
+    },
+    "common": {
+        "enabled": "Enabled",
+        "disabled": "Disabled",
+        "all": "All",
+        "present": "Present",
+        "absent": "Absent",
+        "load_error": "Analytics data could not be loaded.",
+        "per_page_20": "20",
+        "per_page_50": "50",
+        "per_page_100": "100"
+    },
+    "admin": {
+        "dashboard": {
+            "title": "Site Analytics",
+            "description": "Review visits and content usage.",
+            "cards": {
+                "visitors_today": "Visitors today",
+                "sessions_today": "Sessions today",
+                "pageviews_today": "Pageviews today",
+                "pageviews_7d": "Pageviews in the last 7 days"
+            },
+            "trend": {
+                "title": "Last 7 days",
+                "pageviews": "Pageviews",
+                "visitors": "Visitors",
+                "legend_label": "Chart legend",
+                "visitors_value": "{count} visitors",
+                "visitors_tooltip": "{date}: {count} visitors",
+                "pageviews_tooltip": "{date}: {count} pageviews",
+                "legend": "Cyan bars show visitors and blue bars show pageviews."
+            },
+            "popular": {
+                "title": "Top 10 paths",
+                "empty_title": "No popular paths",
+                "item_label": "{path}, {count} pageviews",
+                "empty": "No path data is available."
+            },
+            "referrers": {
+                "title": "Top 10 referrers",
+                "empty_title": "No referrer domains",
+                "empty": "No external referrer data is available."
+            },
+            "recent": {
+                "title": "Recent visits",
+                "empty_title": "No recent visits",
+                "columns": { "occurred_at": "Occurred at", "path": "Path", "source": "Source", "member": "Visitor type" },
+                "empty": "No recent visits are available."
+            }
+        },
+        "visits": {
+            "title": "Visits",
+            "description": "Browse recent visits by date and filters.",
+            "empty": "No visits match these filters.",
+            "export_csv": "Download CSV",
+            "filters": {
+                "from": "Start date",
+                "to": "End date",
+                "path": "Path search",
+                "source": "Source",
+                "member": "Visitor type",
+                "per_page": "Per page",
+                "reset": "Reset filters"
+            },
+            "columns": {
+                "occurred_at": "Occurred at",
+                "path": "Path",
+                "source": "Source",
+                "member": "Member",
+                "visitor": "Visitor ID",
+                "session": "Session ID",
+                "referrer": "Referrer host"
+            }
+        },
+        "settings": {
+            "title": "Site Analytics Settings",
+            "description": "Manage policies for future visit analytics.",
+            "privacy_warning": "Disabling IP anonymization can increase privacy risk. Review the applicable policy before enabling tracking.",
+            "save": "Save Settings",
+            "saving": "Saving",
+            "save_success": "Site analytics settings were saved.",
+            "save_error": "Site analytics settings could not be saved.",
+            "validation_error": "Review the entered values."
+        },
+        "common": {
+            "load_error": "Analytics data could not be loaded."
+        }
+    },
+    "settings": {
+        "enabled": {
+            "label": "Enable Analytics",
+            "description": "Whether site analytics is enabled."
+        },
+        "retention_days": {
+            "label": "Retention Period",
+            "description": "Days to retain visit records."
+        },
+        "ip_anonymization": {
+            "label": "IP Anonymization",
+            "description": "How IP addresses will be anonymized."
+        },
+        "exclude_bots": {
+            "label": "Exclude Bots",
+            "description": "Exclude search engine bots from analytics."
+        },
+        "exclude_paths": {
+            "label": "Excluded Paths",
+            "description": "Enter one excluded path per line."
+        },
+        "session_timeout_minutes": {
+            "label": "Session Timeout",
+            "description": "Minutes used to separate visit sessions."
+        },
+        "respect_do_not_track": {
+            "label": "Respect Do Not Track",
+            "description": "Respect the browser Do Not Track setting."
+        }
+    },
+    "source": {
+        "initial": "Initial entry",
+        "spa": "SPA navigation"
+    },
+    "member": {
+        "member": "Member",
+        "guest": "Guest"
+    }
+}

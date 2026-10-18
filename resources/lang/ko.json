@@ -1,0 +1,131 @@
+{
+    "module": {
+        "name": "사이트 분석",
+        "description": "방문 및 콘텐츠 이용 현황을 분석하는 관리자용 모듈"
+    },
+    "common": {
+        "enabled": "사용",
+        "disabled": "사용 안 함",
+        "all": "전체",
+        "present": "있음",
+        "absent": "없음",
+        "load_error": "분석 데이터를 불러오지 못했습니다.",
+        "per_page_20": "20개",
+        "per_page_50": "50개",
+        "per_page_100": "100개"
+    },
+    "admin": {
+        "dashboard": {
+            "title": "사이트 분석",
+            "description": "방문 및 콘텐츠 이용 현황을 확인합니다.",
+            "cards": {
+                "visitors_today": "오늘 방문자",
+                "sessions_today": "오늘 세션",
+                "pageviews_today": "오늘 페이지뷰",
+                "pageviews_7d": "최근 7일 페이지뷰"
+            },
+            "trend": {
+                "title": "최근 7일 추이",
+                "pageviews": "페이지뷰",
+                "visitors": "방문자",
+                "legend_label": "차트 범례",
+                "visitors_value": "방문자 {count}명",
+                "visitors_tooltip": "{date} 방문자 {count}명",
+                "pageviews_tooltip": "{date} 페이지뷰 {count}회",
+                "legend": "청록색 막대는 방문자, 파란색 막대는 페이지뷰입니다."
+            },
+            "popular": {
+                "title": "인기 경로 Top 10",
+                "empty_title": "인기 경로 없음",
+                "item_label": "{path}, 페이지뷰 {count}회",
+                "empty": "집계할 경로가 없습니다."
+            },
+            "referrers": {
+                "title": "유입 도메인 Top 10",
+                "empty_title": "유입 도메인 없음",
+                "empty": "외부 유입 도메인 데이터가 없습니다."
+            },
+            "recent": {
+                "title": "최근 방문",
+                "empty_title": "최근 방문 없음",
+                "columns": { "occurred_at": "발생 시각", "path": "경로", "source": "유입 유형", "member": "회원 구분" },
+                "empty": "최근 방문 기록이 없습니다."
+            }
+        },
+        "visits": {
+            "title": "방문 기록",
+            "description": "최근 방문 기록을 기간과 조건으로 조회합니다.",
+            "empty": "조건에 해당하는 방문 기록이 없습니다.",
+            "export_csv": "CSV 다운로드",
+            "filters": {
+                "from": "시작일",
+                "to": "종료일",
+                "path": "경로 검색",
+                "source": "유입 유형",
+                "member": "회원 구분",
+                "per_page": "페이지당 개수",
+                "reset": "필터 초기화"
+            },
+            "columns": {
+                "occurred_at": "발생 시각",
+                "path": "경로",
+                "source": "유입 유형",
+                "member": "회원",
+                "visitor": "방문자 식별",
+                "session": "세션 식별",
+                "referrer": "유입 도메인"
+            }
+        },
+        "settings": {
+            "title": "사이트 분석 설정",
+            "description": "향후 방문 분석에 적용할 정책을 관리합니다.",
+            "privacy_warning": "IP 익명화를 사용하지 않는 설정은 개인정보 위험을 높일 수 있습니다. 실제 추적 기능을 활성화하기 전에 관련 정책을 검토하세요.",
+            "save": "설정 저장",
+            "saving": "저장 중",
+            "save_success": "사이트 분석 설정을 저장했습니다.",
+            "save_error": "사이트 분석 설정을 저장하지 못했습니다.",
+            "validation_error": "입력값을 확인해주세요."
+        },
+        "common": {
+            "load_error": "분석 데이터를 불러오지 못했습니다."
+        }
+    },
+    "settings": {
+        "enabled": {
+            "label": "분석 사용",
+            "description": "사이트 분석 기능의 사용 여부입니다."
+        },
+        "retention_days": {
+            "label": "보존 기간",
+            "description": "방문 기록을 보존할 일수입니다."
+        },
+        "ip_anonymization": {
+            "label": "IP 익명화",
+            "description": "IP 주소를 처리할 익명화 방식입니다."
+        },
+        "exclude_bots": {
+            "label": "검색 로봇 제외",
+            "description": "검색 로봇 방문을 분석에서 제외합니다."
+        },
+        "exclude_paths": {
+            "label": "제외 경로",
+            "description": "분석에서 제외할 경로를 한 줄에 하나씩 입력합니다."
+        },
+        "session_timeout_minutes": {
+            "label": "세션 제한 시간",
+            "description": "방문 세션을 구분할 시간입니다."
+        },
+        "respect_do_not_track": {
+            "label": "추적 거부 존중",
+            "description": "브라우저의 추적 거부 설정을 존중합니다."
+        }
+    },
+    "source": {
+        "initial": "최초 진입",
+        "spa": "화면 이동"
+    },
+    "member": {
+        "member": "회원",
+        "guest": "비회원"
+    }
+}

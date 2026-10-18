@@ -1,0 +1,32 @@
+{
+    "version": "1.0.0",
+    "routes": [
+        {
+            "path": "*/admin/analytics",
+            "layout": "admin_analytics_dashboard",
+            "auth_required": true,
+            "meta": {
+                "title": "$t:glitter-analytics.admin.dashboard.title",
+                "permission": "glitter-analytics.dashboard.view"
+            }
+        },
+        {
+            "path": "*/admin/analytics/visits",
+            "layout": "admin_analytics_visits",
+            "auth_required": true,
+            "meta": {
+                "title": "$t:glitter-analytics.admin.visits.title",
+                "permission": "glitter-analytics.visits.view"
+            }
+        },
+        {
+            "path": "*/admin/analytics/settings",
+            "layout": "admin_analytics_settings",
+            "auth_required": true,
+            "meta": {
+                "title": "$t:glitter-analytics.admin.settings.title",
+                "permission": "glitter-analytics.settings.view"
+            }
+        }
+    ]
+}
